@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+.box {
+	float: left;
+	border: 5px solid;
+	padding: 15px;
+}
+</style>
+<title>프로필 페이지</title>
+</head>
+<body>
+<div align="right"	style="background-color: #faf7f9;">
+	<a th:href="@{/}">홈</a>&nbsp;
+	<a th:href="@{/여기겟맵핑주소}">로그인</a>&nbsp;
+	<a th:href="@{/cartList}">회원가입</a>&nbsp;
+	<a th:href="@{/login}">마이페이지</a>&nbsp;
+	<a th:href="@{/logout}">친구찾기</a>&nbsp;
+	<br><hr/>
+</div>
+	<h1>프로필 카드를 작성해 주세요</h1>
+	<!--action은 Controller의 맵핑주소ㅡ  object는 @Validated의 객체명   -->
+	<form th:action="@{/add_ok}" th:object="${profile}" method="post" >
+		<input type="hidden" name="doguser.id" value="1">
+		<!-- profile페이지에서 등록하면 데이터는 잘가지만 에러가뜸 이때 profile테이블에 doguser_id에 1을 주면해결되지만 번거로우니 
+		위의 인풋 히든타입을 줘서 해결-->
+		<div class="a">
+			<label for="dogname">이름</label> <input type="text" name="pet.dogname" />
+		</div><!--이 form에서 profile을 객체로 한번타고 후에 input name에서 pet.dogname으로 한번더타서 저장시킨다 -->
+		<div class="a">
+			<label for="dogage">나이</label> <input type="text" name="pet.dogage" />		
+		</div>
+		<div class="a">
+			<label for="doggender">성별</label> <input type="text" name="pet.doggender" />		
+		</div>
+		<div class="a">
+			<label for="kind">견종</label> <input type="text" name="pet.kind" />		
+		</div>
+		<div class="a">
+			<label for="dogsize">크기</label> <input type="text" name="pet.dogsize" />		
+		</div>
+		<div class="a">
+			<label for="per">성격</label> <input type="text" name="pet.per" />		
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	
+		<br/><button class="but">
+			<span class="text">프로필카드 등록</span>
+		</button>
+	</form>
+
+
+
+
+
+<br/>
+
+
+
+</body>
+</html>

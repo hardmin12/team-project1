@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link href="https://fonts.googleapis.com/css?family=Lobster"
+	rel="stylesheet">
+<style type="text/css">
+.btn {
+	text-decoration: none;
+	font-size: 1rem;
+	color: white;
+	padding: 10px 20px 10px 20px;
+	margin: 20px;
+	display: inline-block;
+	border-radius: 10px;
+	transition: all 0.1s;
+	text-shadow: 0px -2px rgba(0, 0, 0, 0.44);
+	font-family: fantasy;
+}
+
+.btn:active {
+	transform: translateY(3px);
+}
+
+.btn.blue {
+	background-color: #1f75d9;
+	border-bottom: 5px solid #165195;
+}
+
+.btn.blue:active {
+	border-bottom: 2px solid #165195;
+}
+</style>
+<title>댕네한바퀴</title>
+</head>
+<body>
+	<div align="right" style="background-color: #faf7f9;">
+		<a th:href="@{/}">홈</a>&nbsp; 
+		<a th:href="@{/login}">로그인</a>&nbsp; 
+		<a th:href="@{/register}">회원가입</a>&nbsp; 
+		<a th:href="@{/}">마이페이지</a>&nbsp;
+		<a th:href="@{/list}">친구찾기</a>&nbsp; <br>
+		<hr />
+	</div>
+	<br>
+	<br>
+	<div style="text-align: center;" class="sitelogo">
+		<a th:href="@{/}"><img class="Logo" src="/img/logo2.png"
+			width="300px" height="70px"></a>
+	</div>
+	<br />
+	<div align="center" class="search menu">
+		<select name="addr">
+			<option value="">지역(시)</option>
+			<option value="">서울</option>
+			<option value="">대전</option>
+			<option value="">대구</option>
+			<option value="">울산</option>
+			<option value="">세종</option>
+			<option value="">광주</option>
+			<option value="">인천</option>
+			<option value="">제주도</option>
+		</select> <select name="size">
+			<option value="">크기</option>
+			<option value="">대형</option>
+			<option value="">중형</option>
+			<option value="">소형</option>
+		</select> <select name="age">
+			<option value="">나이</option>
+			<option value="">0~1</option>
+			<option value="">2~6</option>
+			<option value="">7세 이상</option>
+		</select> <select name="char">
+			<option value="">성격</option>
+			<option value="">리더형</option>
+			<option value="">독립적</option>
+			<option value="">소심함</option>
+			<option value="">긍정적</option>
+			<option value="">적응적</option>
+		</select> <select name="kind">
+			<option value="">종</option>
+			<option value="">골든리트리버</option>
+			<option value="">치와와</option>
+			<option value="">샤모에드</option>
+			<option value="">푸들</option>
+			<option value="">허스키</option>
+			<option value="">알수없음</option>
+		</select> <select name="gender">
+			<option value="">성별</option>
+			<option value="">수컷</option>
+			<option value="">암컷</option>
+			<option value="">중성화</option>
+		</select>
+	</div>
+	<form th:action="@{/list}" method="post">
+		<div align="center" class="search_sample">
+			<input type="search" class="search-field"
+				placeholder=" 찾고 싶은 친구를 검색해 보세요!" value="" name="keyword"
+				style="border: 2px solid #b2e245; background-color: #ffffff; width: 420px; height: 43px" />
+			<button type="submit" class="search-submit">&#128269;</button>
+		</div>
+	</form>
+	<br />
+	<div style="text-align: center;">
+		<!-- 메인사진 -->
+		<img src="/img/main3.jpg">
+	</div>
+
+
+	<div class="친구검색결과목록" align="center">
+		<table border="1">
+			<tr>
+				<th>사진</th>
+				<th>이름</th>
+				<th>나이</th>
+				<th>성별</th>
+				<th>종</th>
+				<th>크기</th>
+				<th>성격</th>
+				<th>비고</th>
+			</tr>
+			<tr th:each="friend : ${list}">
+				<td><img th:src="@{'/img/dog/'+ ${friend.id} + '.jpg'}"
+					height="200"></td>
+				<td>[[${friend.dogname}]]</td>
+				<td>[[${friend.dogage}]]세</td>
+				<td>[[${friend.doggender}]]</td>
+				<td>[[${friend.kind}]]</td>
+				<td>[[${friend.dogsize}]]</td>
+				<td>[[${friend.per}]]</td>
+				<td><a class="btn blue" href="#blue">친구하기</a></td>
+			</tr>
+		</table>
+	</div>
+	
+	
+<!-- 광고창 새탭으로 열기 -->	
+<br>
+<div class="AD" align="center">
+	<img src="img/ad.png" height="150px" width="250px"><br/>
+	<a href="https://www.kurly.com/goods/5125399" target="_blank"> 광고에요! 클릭해주세요!</a>
+</div>	
+<!-- 저작권 -->
+<hr/>
+ 	<div class="Copyright" align="center">
+	 	<address >Copyright © 2022 by TeamProjectB. All Rights Reserved.</address>
+ 	</div>
+</body>
+</html>

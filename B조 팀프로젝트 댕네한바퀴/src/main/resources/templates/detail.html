@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+<title>Insert title here</title>
+<style>
+	* {
+		text-align: center;
+	}
+	h1 {
+		margin: 30px;
+	}
+	.msg_box {
+		border: 1px solid #000;
+		width: 300px;
+		height: 100px;
+		margin: 50px auto;
+	}
+	.re_box {
+		border: 1px solid #000;
+		width: 700px;
+		height: 200px;
+		margin: 50px auto;
+		}
+	.re_box p {
+		margin: 10px;
+	}
+	
+</style>
+</head>
+<body>
+<!-- 메뉴 -->
+	<div align="right" style="background-color: #faf7f9;">
+		<a th:href="@{/}">홈</a>&nbsp; <a th:href="@{/login}">로그인</a>&nbsp; 
+		<a th:href="@{/register}">회원가입</a>&nbsp; 
+		<a th:href="@{/login}">마이페이지</a>&nbsp;
+		<a th:href="@{/list}">친구찾기</a>&nbsp; <br>
+		<hr />
+	</div>
+	<h1>상세페이지</h1>
+	<div class="mb-3">
+		<img src="img/detail/1.jpg" alt="강아지 사진" width="300px">
+	</div>
+	<p class="msg_box">이곳은 상세 설명란 입니다.</p>
+	
+	<img src="img/detail/7.jpg" alt="" width="200px">
+	<img src="img/detail/2.jpg" alt="" width="200px">
+	<img src="img/detail/3.jpg" alt="" width="200px">
+	<img src="img/detail/4.jpg" alt="" width="200px">
+	<img src="img/detail/5.jpg" alt="" width="200px">
+	<img src="img/detail/6.jpg" alt="" width="200px">
+	
+	<div class="re_box" th:each="dc : ${detailComment}">
+		<p style="color: green">🐕이곳은 산책 후기 작성 공간입니다.💖</p>
+		<p>&#8627; 후기 작성자: <span th:text="${dc.name}">코멘트 대마왕</span></p><br>
+		<p>후기 내용:<span th:text="${dc.review_con}">1빠</span></p>
+	</div>
+ 
+ 
+ 	<form th:action="@{/comment_ok}" 
+		  th:object="${detailComment}" method="post">
+		<input type="hidden">
+		<div class="mb-2">
+	 		<label for="name">이름: </label><br>
+	 		<input type="text" name="name" th:field="*{name}"/>
+	 	</div>
+		 
+		<div class="mb-3">
+			<label for="review_con">후기 내용:</label><br>
+			<textarea name="review_con" rows="2" cols="20" th:field="*{review_con}"></textarea>
+		</div>
+		<input type="submit" value="코멘트 투고">
+	</form>
+	
+	<hr/>
+ <div class="Copyright" align="center">
+ <address >Copyright © 2022 by TeamProjectB. All Rights Reserved.</address>
+ </div>
+</body>
+</html>

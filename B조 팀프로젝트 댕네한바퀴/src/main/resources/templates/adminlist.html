@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div th:replace="~{fragments/topbar :: topbar}"></div>
+		<main class="offcanvas-outside bg-light">
+			<div class="container-fluid">
+				<h1>사용자 목록</h1>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>순번</th>
+							<th>사용자이름</th>
+							<th>Email</th>
+							<th>주소</th>
+							<th>성별</th>
+							<th>권한</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="adminlist : ${admin}">
+							<td th:text="*{adminlist.id}"></td>
+							<td th:text="*{adminlist.username}"></td>
+							<td th:text="*{adminlist.email}"></td>
+							<td th:text="*{adminlist.adress}"></td>
+							<td th:text="*{T(com.oraclejava.util.Type).GENDERS.get(adminlist.gender)}"></td>
+							<td th:text="*{adminlist.authority}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

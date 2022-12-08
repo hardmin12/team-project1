@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<style type="text/css">
+.App-header {
+	min-height: 70vh;
+	flex-direction: column;
+	align-items: center; justify-content : center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+	justify-content: center;
+}
+</style>
+<title>프로필 등록 페이지</title>
+</head>
+<body>
+
+<!-- 메뉴 -->
+	<div align="right" style="background-color: #faf7f9;">
+		<a th:href="@{/}">홈</a>&nbsp; <a th:href="@{/login}">로그인</a>&nbsp; <a
+			th:href="@{/register}">회원가입</a>&nbsp; <a th:href="@{/a}">상세페이지</a>&nbsp;
+		<a th:href="@{/list}">친구찾기</a>&nbsp; <br>
+		<hr />
+	</div>
+	<br />
+	<br />
+	<div class="App-header">
+		<a th:href="@{/profileform}">프로필 등록</a>&nbsp;
+		<table border="1">
+			<tr>
+				<th>이름</th>
+				<th>나이</th>
+				<th>성별</th>
+				<th>크기</th>
+				<th>품종</th>
+				<th>성격</th>
+				<th>삭제</th>
+			</tr>
+			<tr th:each="profile : ${profiles}">
+				<td th:text="${profile.pet.dogname}"></td>
+				<td th:text="${profile.pet.dogage}"></td>
+				<td th:text="${profile.pet.doggender}"></td>
+				<td th:text="${profile.pet.dogsize}"></td>
+				<td th:text="${profile.pet.kind}"></td>
+				<td th:text="${profile.pet.per}"></td>
+				<td><a th:href="@{/delete/{id}(id=${profile.pet.id})}"
+	  class="btn btn-danger">
+	<i class="bi bi-trash-fill"></i>
+	삭제
+	</a></td>
+			</tr>
+		</table>
+	</div>
+	
+<!-- 광고창 새탭으로 열기 -->
+	<br>
+	<div class="AD" align="center">
+		<img src="img/ad.png" height="150px" width="250px"><br /> <a
+			href="https://www.kurly.com/goods/5125399" target="_blank"> 광고에요!
+			클릭해주세요!</a>
+	</div>
+
+<!-- 저작권 -->
+	<hr />
+	<div class="Copyright" align="center">
+		<address>Copyright © 2022 by TeamProjectB. All Rights
+			Reserved.</address>
+	</div>
+</body>
+</html>

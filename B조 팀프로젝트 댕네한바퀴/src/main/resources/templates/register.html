@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/loginLayout}">
+<head>
+<meta charset="UTF-8">
+<title>Pet Register</title>
+</head>
+<body>
+<main layout:fragment="content" class="bg-image">
+	<div class="container">
+		<div class="row vh-100 align-item-center justify-content-center">
+			<div class="card shadow" style="max-width: 480px;">
+				<div class="card-body">
+					<h3 class="card-title mb-3 text-center text-navy">
+						<img src="https://lh3.googleusercontent.com/fife/AAbDypDInOCn3uZKmDsvhFJgjbb6aF8zLQvdzVjk1cW5Ccw_Vs5UaJbXgmh6zr8MQWibHSHlGB967KIfTti86Yu65fzdT3ZlPsJujPHcmRp3KEFruWahAteWE-P1hZIgjCOn9aOB-D7kaiaYG3hNRCeM2ZqLpZheFWmUXs8bUqGG1eAHKCWzV3jctS1amysr9z_3yG5rDDiU2HVZdJRAQdXKwiTvPNHbolO5n5musOB-n3Qtyr2khJSCZtLwmsr-ruFyzEe5DbcGZ7qlTvhuGtWxspfFBpxc65p7ZrsS5lLT3OtFYYcW4eKiK-birt3iIYaF8RFz_49qHhgR7tHWOZPfDgUz59ACl96UYrUT2rLxHjOTf8AQVN85SPcFDNYijdxzCMG-jSUYTXGizKIog5xwj1PmGysJaJpn8_ou6unAehjQbsglm8FPqGqkBAnuCNvKr7OEXKOtxGNCsdnHCuR9rqG236WAXFzrDwhHttjVmJ6ZgCjHsNbg61HfHJ4q-YlkucsEGEVqaZbMH5dNJKf3Liofi5YR71-JJ0Gf455wgY89rHeUcL91eshrS6rifyJzQAdyct7IgzP8hozGRE0JAGME8SW2mZ1uk-iG5x6jfe6OCe90y5qbeYf5ku5zE7vJdVUG-kDgFNkOH6-JvXBTPm-rLL_gQGHY4QEqsHjlg-VVb4YF6sJHJh9m4iTHjcnLT4voUKgHcsXQGhtFZZ6PyCpYCOQQSazcaq3l4r6CkUcC5Eb_xg3ArdMhreTDwMmYlhCHoeELEk-CCRvZ3SL8Sze--YGZq1dIetHf8-9Fyy62LDdcuaejIpeg8ELy0Mc8EZGBn6y1XQgtHASN_09ghA5wPrqoTQNk6L6P3rj5IqbWZTFWS9bIF2RQB5mXj1Qzh_XhWcyRZzfycV6ZR4eaXBFe-zUxf4bqH-yPjzVFPL4LKoCrOlVA70DNoSzdomrS5GEdurNhvCYMGhLImJrR_eur6yi81k5-ZFMN_RWY-Svx5QMtdaHd5ue5Xd2f5FhkgcrXN1YFEVxsREE8sNi6xLmJrBUNhbek5NKYF2gcIB0vHKWhokHgjZPM-JwYC126JKlaOPHAaCkldES2Sved4zYbGUfw_exnQ4Uwx0cGDfHCNRKp4qQHq7lxV_k_N5goJcypb44ao0RKy72iED-LKf_lOWh3_dASK9t1PDEg9lxWjMsNZZMZivI0lXrJRcaP7n7Xp3ID_RdlXjjPxQIVtJ4ShnE090C2P1ls8p19w4_-IbbOaZ1zVkpx1Ls9ouAmsnbc2n3B1M6Fv5YFH4DDCqQb1S-pzhZVV4qizHgEzU5PHn8snU1i-jYojSvSS6fKQ-5AitWeunh19GRMxe0dMTb7jqK3crAojT2onI42SL4cYbfGXdZrzxJM7GrThpWl9Fix-6CTQQoA8t4AuW7mNt2M3gF3pUXMZLhDtth416GWJ0yKlh3lvff6tQms1kOXnSv0vSB8zJcM=w1920-h902" width="300px" height="70px"><br/>
+						의 친구가 되어주세요.
+					</h3><br>
+					<input type="hidden" id="token_sjoin" name="token_sjoin">
+					<form th:action="@{/register}" th:object="${user}"
+						method="post">
+						<div class="mb-3">
+							<label for="username" class="form-label">
+								<span class="badge bg-danger">필수입력</span>
+								사용자아이디
+							</label>
+							<input class="form-control" type="text"
+								th:errorclass="is-invalid" th:field="*{username}"/>
+							<div class="invalid-feedback" th:errors="*{username}"></div>
+						</div>
+						
+						<div class="mb-3">
+							<label for="username" class="form-label">
+								<span class="badge bg-danger">필수입력</span>
+								패스워드
+							</label>
+							<input class="form-control" type="password"
+								th:errorclass="is-invalid" th:field="*{password}"/>
+							<div class="invalid-feedback" th:errors="*{password}"></div>
+						</div>
+						<div class="mb-3">
+							<label for="username" class="form-label">
+								<span class="badge bg-danger">필수입력</span>
+								E-mail
+							</label>
+							<input class="form-control" type="email"
+								th:errorclass="is-invalid" th:field="*{email}"/>
+							<div class="invalid-feedback" th:errors="*{email}"></div>
+						</div>
+						<div class="mb-3">
+							<label for="username" class="form-label">
+								<span class="badge bg-danger">필수입력</span>
+								주소(지역(시)을 적어주세요 / 예: 서울, 부산)
+							</label>
+							<input class="form-control" type="text"
+								th:errorclass="is-invalid" th:field="*{addr}"/>
+							<div class="invalid-feedback" th:errors="*{addr}"></div>
+						</div>
+																																				
+						<button class="w-100 btn btn-navy" type="submit">
+							회원가입
+						</button>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<style type="text/css">
+.box_list {
+	margin: 50px 51px 30px 500px; /* 여기 웹사이트 키우면 박스 부너짐 100%유지하면 ok // 추후 박스 고정시키기 */
+	width: 970px;
+	height: 750px;
+}
+.box {
+	float: left;
+	margin: 21px 51px 30px 5px;
+	border: 1px solid;
+	padding: 10px;
+	width: 150px;
+	height: 150px;
+}
+
+/* 12.04.16수정 메인사진 슬라이드선택  */
+.slider{
+    width: 700px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden; /* 현재 슬라이드 오른쪽에 위치한 나머지 슬라이드 들이 보이지 않도록 가림 */
+}
+.slider input[type=radio]{
+    display: none;
+}
+ul.imgs{
+    padding: 0;
+    margin: 0;
+    list-style: none;    
+}
+ul.imgs li{
+    position: absolute;
+    left: 640px;
+    transition-delay: 1s; /* 새 슬라이드가 이동해 오는 동안 이전 슬라이드 이미지가 배경이 보이도록 지연 */
+
+    padding: 0;
+    margin: 0;
+}
+.bullets{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    z-index: 2;
+}
+.bullets label{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.55);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+/* 현재 선택된 불릿 배경 흰색으로 구분 표시 */
+.slider input[type=radio]:nth-child(1):checked~.bullets>label:nth-child(1){
+    background-color: #fff;
+}
+.slider input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2){
+    background-color: #fff;
+}
+.slider input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3){
+    background-color: #fff;
+}
+.slider input[type=radio]:nth-child(4):checked~.bullets>label:nth-child(4){
+    background-color: #fff;
+}
+.slider input[type=radio]:nth-child(1):checked~ul.imgs>li:nth-child(1){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}
+.slider input[type=radio]:nth-child(2):checked~ul.imgs>li:nth-child(2){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}
+.slider input[type=radio]:nth-child(3):checked~ul.imgs>li:nth-child(3){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}
+.slider input[type=radio]:nth-child(4):checked~ul.imgs>li:nth-child(4){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}
+</style>
+<title>댕네한바퀴</title>
+</head>
+<body>
+<!-- 메뉴 -->
+	<div align="right" style="background-color: #faf7f9;">
+		<a th:href="@{/}">홈</a>&nbsp; <a th:href="@{/login}">로그인</a>&nbsp; 
+		<a th:href="@{/register}">회원가입</a>&nbsp; 
+		<a th:href="@{/mypage}">마이페이지</a>&nbsp;
+		<a th:href="@{/list}">친구찾기</a>&nbsp; <br>
+		<hr />
+	</div><br/><br/>
+<!-- 사이트로고 -->
+<div style="text-align: center;" class="sitelogo">	
+<a th:href="@{/}"><img class="Logo" src="/img/logo2.png" width="300px" height="70px"></a>
+</div><br/>
+<!-- 검색 선택바 -->
+	<div align="center" class="search menu">
+		<select name="addr">
+			<option value="">지역(시)</option>
+			<option value="">서울</option>
+			<option value="">대전</option>
+			<option value="">대구</option>
+			<option value="">울산</option>
+			<option value="">세종</option>
+			<option value="">광주</option>
+			<option value="">인천</option>
+			<option value="">제주도</option>
+		</select> <select name="size">
+			<option value="">크기</option>
+			<option value="">대형</option>
+			<option value="">중형</option>
+			<option value="">소형</option>
+		</select> <select name="age">
+			<option value="">나이</option>
+			<option value="">0~1</option>
+			<option value="">2~6</option>
+			<option value="">7세 이상</option>
+		</select> <select name="char">
+			<option value="">성격</option>
+			<option value="">리더형</option>
+			<option value="">독립적</option>
+			<option value="">소심함</option>
+			<option value="">긍정적</option>
+			<option value="">적응적</option>
+		</select> <select name="kind">
+			<option value="">종</option>
+			<option value="">골든리트리버</option>
+			<option value="">치와와</option>
+			<option value="">샤모에드</option>
+			<option value="">푸들</option>
+			<option value="">허스키</option>
+			<option value="">알수없음</option>
+		</select> <select name="gender">
+			<option value="">성별</option>
+			<option value="">수컷</option>
+			<option value="">암컷</option>
+			<option value="">중성화</option>
+		</select>
+	</div>
+<!-- 검색창 -->
+	<form th:action="@{/list}" method="post">
+		<div align="center" class="search_sample">
+			<input type="search" class="search-field"
+				placeholder=" 찾고 싶은 친구를 검색해 보세요!" value="" name="keyword" 
+				style="border: 2px solid #b2e245; background-color: #ffffff; width: 443px; 
+				height: 43px"/>
+			<button type="submit" class="search-submit">&#128269;</button>
+		</div>
+	</form>
+	<br />
+<!-- 12.04.16수정 메인사진 슬라이드 -->
+<div class="slider">
+    <input type="radio" name="slide" id="slide1" checked>
+    <input type="radio" name="slide" id="slide2">
+    <input type="radio" name="slide" id="slide3">
+    <input type="radio" name="slide" id="slide4">
+    <ul id="imgholder" class="imgs">
+        <li><img src="./img/main1.jpg"></li>
+        <li><img src="./img/main2.jpg"></li>
+        <li><img src="./img/main3.jpg"></li>
+        <li><img src="./img/main4.jpg"></li>
+    </ul>
+    <div class="bullets">
+        <label for="slide1">&nbsp;</label>
+        <label for="slide2">&nbsp;</label>
+        <label for="slide3">&nbsp;</label>
+        <label for="slide4">&nbsp;</label>
+    </div>
+</div>
+
+<!-- Main 프로필 Box 12개 -->
+	<div class="box_list" >
+		<div class="box">
+			<tr th:each="a : ${mainkey}">
+				<td th:text="${a.pet.dogname}">Test_Pet_dogname</td>
+				<td>Test_Pet_dogname</td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}">Test_DogUser_name</td>
+				<td>Test_DogUser_name</td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="a : ${mainkey}">
+				<td th:text="${a.pet.dogname}"></td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}"></td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}"></td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}"></td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}"></td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}"></td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}"></td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}"></td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}"></td>
+			</tr>
+		</div>
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser?.username}"></td>
+			</tr>
+		</div>
+	</div>
+	
+<!-- mainController-profileRepository에서 프로필로 간후 oneTwoMany로 DogUser로 간후 유저정보검색
+		<div class="box">
+			<tr th:each="profile : ${mainkey}">
+				<td th:text="${profile.doguser.username}"></td>
+			</tr>
+		</div>
+ -->
+	
+<!-- 광고창 새탭으로 열기 -->	
+<br>
+<div class="AD" align="center">
+	<img src="img/ad.png" height="150px" width="250px"><br/>
+	<a href="https://www.kurly.com/goods/5125399" target="_blank"> 광고에요! 클릭해주세요!</a>
+</div>	
+<!-- 저작권 -->
+<hr/>
+ 	<div class="Copyright" align="center">
+	 	<address >Copyright © 2022 by TeamProjectB. All Rights Reserved.</address>
+ 	</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>User List</title>
+<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+	<h1>User List</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>유저명</th>
+				<th>주소</th>
+				<th>Email</th>
+				<th>권한</th>
+				<th>사용자</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- tr th:each : 행 반복문을 수행하겠다는 의미입니다 [여러 데이터 출력] -->
+			<!--id, username, addr, email, password, authority, admin  -->
+			<tr th:each="userlist : ${user}">
+				<td><span th:text="${userlist.doguser.id}"></span></td>
+				<td><span th:text="${userlist.doguser.username}"></span></td>
+				<td><span th:text="${userlist.doguser.addr}"></span></td>
+				<td><span th:text="${userlist.doguser.email}"></span></td>
+				<td><span th:text="${userlist.doguser.authority}"></span></td>
+				<td><span th:text="${userlist.doguser.admin}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
