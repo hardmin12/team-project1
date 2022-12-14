@@ -5,22 +5,20 @@
 </br>
 
 ## 1. 제작 기간 & 참여 인원
-- 2019년 2월 18일 ~ 4월 5일
-- 개인 프로젝트
+- 2022년 11월 21일 ~ 12월 5일
+- 팀 프로젝트
 
 </br>
 
 ## 2. 사용 기술
 #### `Back-end`
   - Java 8
-  - Spring Boot 2.3
-  - Gradle
+  - Spring Boot 2.7.5
+  - Maven
   - Spring Data JPA
-  - QueryDSL
-  - H2
-  - MySQL 5.7
+  - Oracle
   - Spring Security
-  - Jsoup
+  - Tymeleaf
 #### `Front-end`
   - Vue.js 3.0
   - Element UI
