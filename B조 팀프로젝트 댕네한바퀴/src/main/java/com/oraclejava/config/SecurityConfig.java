@@ -35,14 +35,14 @@ public class SecurityConfig {
 			.mvcMatchers("/css/**", "/js/**", "/images/**", "/webjars/**",
 							"/favicon.*", "/icon-*").permitAll()
 			// 여기에 풀어주고 싶은 url을 지정하면 됨
-			.mvcMatchers("/register", "/login").permitAll()
+			.mvcMatchers("/register", "/login","/").permitAll()
 			// 어드민 컨트롤러 권한 설정
 			.antMatchers("/admin/**").hasAuthority(Authority.ADMIN.name())
 			// 화이트리스트 방식(모든 요청을 막음)
 			.anyRequest().authenticated())
 			.formLogin(login -> login
 					.loginPage("/login")
-					.defaultSuccessUrl("/")
+					.defaultSuccessUrl()
 					.permitAll())
 			//로그아웃 설정 추가
 			.logout(logout -> logout
