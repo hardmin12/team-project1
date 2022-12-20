@@ -19,9 +19,6 @@
   - Oracle
   - Spring Security
   - Tymeleaf
-#### `Front-end`
-  - Vue.js 3.0
-  - Element UI
 
 </br>
 
