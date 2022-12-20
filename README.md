@@ -389,4 +389,6 @@ public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
 </br>
 
 ## 6. 회고 / 느낀점
->프로젝트 개발 회고 글: https://zuminternet.github.io/ZUM-Pilot-integer/
+>프로젝트를 진행하며 가장 크게 느낀 점은 소통의 중요성이다. 
+ 각자 맡은 파트를 해내는 것도 중요하지만 그것도 충분한 소통이 이루어졌을 때의 일이라는 것을 깨달았다.
+ 제대로 된 소통이 이루어지지 않아서 프로젝트의 중간 중간 
