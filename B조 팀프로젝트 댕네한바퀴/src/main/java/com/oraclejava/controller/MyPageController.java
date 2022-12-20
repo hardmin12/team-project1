@@ -40,9 +40,9 @@ public class MyPageController {
 
 	@PostMapping("/add_ok")
 	public String addOk(@Validated Profile profile, BindingResult result, Authentication loginUser, Model model) { 
-																													// 모델
-																													// 생략
-																													// 가능
+																													
+																													
+																													
 		if (result.hasErrors()) {
 			return addProfile(profile, loginUser, model);
 		}
