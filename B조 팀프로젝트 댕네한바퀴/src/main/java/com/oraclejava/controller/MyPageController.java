@@ -39,7 +39,7 @@ public class MyPageController {
 	}
 
 	@PostMapping("/add_ok")
-	public String addOk(@Validated Profile profile, BindingResult result, Authentication loginUser, Model model) { // 리다이렉트할거라
+	public String addOk(@Validated Profile profile, BindingResult result, Authentication loginUser, Model model) { 
 																													// 모델
 																													// 생략
 																													// 가능
@@ -78,7 +78,7 @@ public class MyPageController {
 	public String editOk(@Validated Profile profile, BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
-			return editProfile(profile.getId(), model); // 펫말고 프로필 아이디여야 하지않나??
+			return editProfile(profile.getId(), model); 
 		}
 
 		profileRepository.save(profile);
