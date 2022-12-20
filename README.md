@@ -34,8 +34,9 @@
 <summary><b>핵심 기능 설명 펼치기</b></summary>
 <div markdown="1">
 
-### 4.1. 회원가입/로그인
--
+### 4.1. Controller
+- **요청 처리** :pushpin: [코드 확인](https://github.com/Integerous/goQuality/blob/b2c5e60761b6308f14eebe98ccdb1949de6c4b99/src/main/java/goQuality/integerous/controller/PostRestController.java#L55)
+  - Controller에서는 화면단에서 넘어온 요청을 받고, Service 계층에 로직 처리를 위임합니다.
 
 ### 4.2. 관리자 계정
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_vue.png)
