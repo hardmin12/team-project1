@@ -87,11 +87,11 @@
 <div markdown="1">
 
 
-@PostMapping("/add_ok")
+
+																													
+																				@PostMapping("/add_ok")
 	public String addOk(@Validated Profile profile, BindingResult result, Authentication loginUser, Model model) { 
-																													
-																													
-																													
+																																					
 		if (result.hasErrors()) {
 			return addProfile(profile, loginUser, model);
 		}
