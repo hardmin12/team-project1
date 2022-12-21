@@ -86,10 +86,7 @@
 <summary><b>개선된 코드</b></summary>
 <div markdown="1">
 
-~~~java
-/**
- * 게시물 필터 (Tag Name)
- */
+
 @PostMapping("/add_ok")
 	public String addOk(@Validated Profile profile, BindingResult result, Authentication loginUser, Model model) { 
 																													
