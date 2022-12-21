@@ -90,24 +90,21 @@
 /**
  * 게시물 필터 (Tag Name)
  */
-@Override
-public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
+@PostMapping("/add_ok")
+	public String addOk(@Validated Profile profile, BindingResult result, Authentication loginUser, Model model) { 
+																													
+																													
+																													
+		if (result.hasErrors()) {
+			return addProfile(profile, loginUser, model);
+		}
 
-    QueryResults<Post> results = queryFactory
-            .selectFrom(post)
-            .innerJoin(postTag)
-                .on(post.idx.eq(postTag.post.idx))
-            .innerJoin(tag)
-                .on(tag.idx.eq(postTag.tag.idx))
-            .where(tag.name.eq(tagName))
-            .orderBy(post.idx.desc())
-                .limit(pageable.getPageSize())
-                .offset(pageable.getOffset())
-            .fetchResults();
-
-    return new PageImpl<>(results.getResults(), pageable, results.getTotal());
-}
-~~~
+		DogUser user = dogUserRepository.findByUsername(loginUser.getName()).get(); // get은 옵셔널이라 무조건 붙임
+		profile.setDoguser(user);
+		profileRepository.save(profile);
+		petRepository.save(profile.getPet());
+		return "redirect:/";
+	}
 
 </div>
 </details>
