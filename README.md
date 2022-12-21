@@ -34,21 +34,7 @@
 <summary><b>핵심 기능 설명 펼치기</b></summary>
 <div markdown="1">
 
-### 4.1. Controller
-- **요청 처리** :pushpin: [코드 확인](https://github.com/Integerous/goQuality/blob/b2c5e60761b6308f14eebe98ccdb1949de6c4b99/src/main/java/goQuality/integerous/controller/PostRestController.java#L55)
-  - Controller에서는 화면단에서 넘어온 요청을 받고, Service 계층에 로직 처리를 위임합니다.
-
-### 4.2. 관리자 계정
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_vue.png)
-
-- **URL 정규식 체크** :pushpin: [코드 확인](https://github.com/Integerous/goQuality/blob/b587bbff4dce02e3bec4f4787151a9b6fa326319/frontend/src/components/PostInput.vue#L67)
-  - Vue.js로 렌더링된 화면단에서, 사용자가 등록을 시도한 URL의 모양새를 정규식으로 확인합니다.
-  - URL의 모양새가 아닌 경우, 에러 메세지를 띄웁니다.
-
-- **Axios 비동기 요청** :pushpin: [코드 확인]()
-  - URL의 모양새인 경우, 컨텐츠를 등록하는 POST 요청을 비동기로 날립니다.
-
-### 4.3. 프로필 등록
+### 4.1. 프로필 등록
 
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_controller.png)
 
@@ -58,7 +44,7 @@
 - **결과 응답** :pushpin: [코드 확인]()
   - Service 계층에서 넘어온 로직 처리 결과(메세지)를 화면단에 응답해줍니다.
 
-### 4.4. 프로필 상세 검색
+### 4.2. 프로필 상세 검색
 
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_service1.png)
 
