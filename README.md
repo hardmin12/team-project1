@@ -36,7 +36,7 @@
 
 ### 4.1. 프로필 등록
 
-![]([https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_controller.png](https://user-images.githubusercontent.com/95213209/209080155-3b7d7111-35ee-45aa-b519-793d77c0488a.png)
+![]([https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_controller.png](https://user-images.githubusercontent.com/95213209/209080155-3b7d7111-35ee-45aa-b519-793d77c0488a.png))
 
 
 
