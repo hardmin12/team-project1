@@ -48,6 +48,9 @@
 
 <details>
 <summary><b>개선된 코드</b></summary>																					
+	
+	
+	
 		@PostMapping("/add_ok")
 		public String addOk(@Validated Profile profile, BindingResult result, Authentication loginUser, Model model) { 																									       if (result.hasErrors()) {
 			return addProfile(profile, loginUser, model);
