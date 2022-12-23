@@ -47,7 +47,24 @@
 - 프로필 등록 폼에서 '프로필'과 '개'의 데이터를 함께 저장시키기 위해, '프로필'의 '하트'속성을 통해 '프로필' 데이터를 생성시키도록 하였습니다.
 
 <details>
-<summary><b>기존 코드</b></summary>
+<summary><b>개선된 코드</b></summary>
+
+@PostMapping("/add_ok")
+	public String addOk(@Validated Profile profile, BindingResult result, Authentication loginUser, Model model) { 
+																													
+																													
+																													
+		if (result.hasErrors()) {
+			return addProfile(profile, loginUser, model);
+		}
+		DogUser user = dogUserRepository.findByUsername(loginUser.getName()).get(); // get은 옵셔널이라 무조건 붙임
+		profile.setDoguser(user);
+		profileRepository.save(profile);
+		petRepository.save(profile.getPet());
+		return "redirect:/";
+	}
+</div>
+</details>
 
 
 
